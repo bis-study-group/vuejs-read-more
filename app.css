@@ -1,0 +1,20 @@
+body {
+  padding: 2rem;
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.gifs {
+  margin-bottom: 1.5rem;
+}
+
+.container {
+  max-width: 720px;
+}
+
+.columns {
+  align-items: flex-start;
+}
