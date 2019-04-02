@@ -2,8 +2,8 @@ const API_URL = 'https://ruddy-mail.glitch.me/api/list';
 
 Vue.component('gif-list', {
   template: `
-    <div class="columns is-multiline">
-      <!-- Insert gif component here... -->
+    <div class="columns is-multiline">      
+      <gif v-for="item in items" :key="item.index" :src="item.url"></gif>
     </div>
   `,
   props: ['items'],
@@ -26,14 +26,18 @@ new Vue({
     isLastPage: true,
   },
   computed: {
-    url() {
-      /* Insert code here... */
+    url() {      
+      return API_URL + '?page=' + this.page;
     },
   },
   methods: {
     fetchGifs() {
       axios.get(this.url).then(res => {
-        /* Insert code here... */
+        res.data.items.forEach(item => {
+          this.gifs.push(item);
+        });
+        this.isLastPage = res.data.last;
+        this.page++;
       });
     },
   },
