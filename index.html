@@ -15,10 +15,10 @@
     <div id="app">
       <div class="container">
         <h1 class="title">猫GIF</h1>
-        <!-- Insert gif-list component here... -->
+        <gif-list :items="gifs"></gif-list>
         <button
-          v-if="/* Insert code here... */"
-          @click="/* Insert code here... */"
+          v-if="!isLastPage"
+          @click="fetchGifs"
           class="button is-primary is-fullwidth"
         >
           もっと見る
