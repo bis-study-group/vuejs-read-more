@@ -27,20 +27,17 @@ new Vue({
   },
   computed: {
     url() {
-      return API_URL
+      return API_URL + '?page=' + this.page
     },
   },
   methods: {
     fetchGifs() {
       axios.get(this.url).then(res => {
-        console.log(res);
-        // オブジェクトで取得する
         const object = res.data.items
-        // 配列に変換する
         const array = object.map(obj => obj.url)
-        // gifsに追加する
         this.gifs = this.gifs.concat(array)
-        console.log(this.gifs);
+        this.page++
+
         if (res.data.last) {
           this.isLastPage = false
         }
